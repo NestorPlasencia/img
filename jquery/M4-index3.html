@@ -1,0 +1,40 @@
+<!-- Incrementar rendimiento de delegación de eventos -->
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+		<meta charset="utf-8">
+		<title>JQuery: Clase 10</title>
+	</head>
+	<body>
+		<ul id="myList">
+			<li>Perro</li>
+			<li>Gato</li>
+			<li>Raton</li>
+		</ul>
+
+		<buttom id="agregar">No puede dar click</buttom>
+		<buttom id="bind">Bind Click</buttom>
+		<buttom id="unbind">Unbind Click</buttom>
+		<div style="display:none">Click!</div>
+		
+        <script src="js/vendor/jquery.js"></script>
+
+		<script>
+			$(document).ready(function(){
+				function aClick(){
+					$('div').show().fadeOut("show");
+				}
+
+				$("#bind").click(function(){
+					$("body").undelegate("#agregar","click", aClick);
+					$("#agregar").text("Puede dar click!");
+				});
+
+				$("#unbind").click(function(){
+					$("body").undelegate("#agregar","click", aClick);
+					$("#agregar").text("No puede dar click!");
+				})
+			});
+		</script>	
+	</body>
+</html>		

@@ -1,0 +1,36 @@
+<!-- Seleccion por atributos-->
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+		<meta charset="utf-8">
+		<title>JQuery: Clase 03</title>
+	</head>
+	<body>
+		<form >
+			<input id="userName" type="text">
+			<input id="userId" type="text">
+			<input id="userPhone" type="text">
+		</form>
+
+		<div id="azul"></div>
+		<div id="amarillo"></div>
+		<div id="rojo"></div>
+
+		<div id="gato"></div>
+		<div id="ratones"></div>
+		<div id="puerto"></div>
+
+		<div id="gato animal"></div>
+		<div id="gato animal"></div>
+		<div id="animal leon"></div>
+
+		<script src="js/vendor/jquery.js"></script>
+
+		<script>
+			$(document).ready(function(){
+				var toInfo = $("[id~='leon']");
+				console.log(toInfo.length)
+			});
+		</script>	
+	</body>
+</html>		

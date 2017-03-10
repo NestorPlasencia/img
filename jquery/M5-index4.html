@@ -1,0 +1,89 @@
+<!-- Animacion personalizada de animaciones -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>JQuery: Clase 14</title>
+	<style type="text/css">
+		body{
+			background-color: white;
+		}
+		h1{
+			color: black;
+		}
+		img#invader{
+			position: absolute;
+			left: 25%;
+			top: 10%;
+		}
+		img#spaceShip{
+			position: absolute;
+			left: 0;
+			top: 70%;
+		}
+		div#laser{
+			position: absolute;
+			display: none;
+			left: 0;
+			top: 0;
+			width: 10px;
+			height: 70px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<img src="http://i66.tinypic.com/2v0opxj.jpg" id="spaceShip" />
+  	<img id="invader" src="http://i67.tinypic.com/29on47o.jpg" alt="" />
+  	<div id="laser"></div>
+	<script src="js/vendor/jquery.js"></script>
+	<script>
+		$(function(){
+			var winWidht = $(document).width();
+			var duration = 1000;
+			$(document).keydown(function(event){
+				var keyCode = event.keyCode || event.which;
+				var	keyMap = {left: 37, up: 38, right: 39, down:40};
+				switch(keyCode){
+					case keyMap.left:
+						$("#spaceShip").animate({
+							left: '-=50'
+						},200)
+						break;
+					case keyMap.right:
+						$("#spaceShip").animate({
+							left: '+=50'
+						},200)
+						break;
+					case keyMap.up:
+						var ufoLeft = $("#spaceShip").offset().left;
+						var ufoTop = $("#spaceShip").offset().top;
+						$("#laser").offset({
+							left: (ufoLeft+87),
+							top: (ufoTop-30)
+						})
+						
+						$("#laser").css("display","block").animate({top:10},200,function(){
+
+							var invaderLeft = $("#invader").offset().left;
+							var laserLeft = $("#laser").offset().left;
+
+							if(laserLeft >= invaderLeft && laserLeft < invaderLeft + 288 ){
+								$("#invader").hide();
+								$("body").html("<h1>Muerto</h1>");
+							}
+							$("#laser").offset({
+								left: 0,
+								top: 0
+							});
+							$("#laser").css("display","none");
+								
+						})
+						break;	
+				}
+			})
+		})
+	</script>
+</body>
+</html>
+

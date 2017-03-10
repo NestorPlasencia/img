@@ -1,0 +1,38 @@
+<!-- Trabajar con elementos de formulario HTML -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>JQuery: Clase 17</title>
+</head>
+<body>
+	<form>
+		<input type="text" name="userName" placeholder="Ingresa tu nombre" />
+		<input type="text" name="adress" placeholder="Ingresa tu email" />
+
+	</form>
+	
+	<script src="js/vendor/jquery.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+
+	<script>
+		$(function(){
+			if(!Modernizr.input.placeholder){
+				$( 'input[type=text]').focus(function(){
+					if( $(this).val() === $(this).attr('placeholder')){
+						$(this).val('');
+					}
+				});
+				$( 'input[type=text]').blur(function(){
+					if( $(this).val() === "")){
+						$(this).val($(this).attr('placeholder'));
+					}
+				});
+			}
+		})	
+
+	</script>
+	
+</body>
+</html>
+

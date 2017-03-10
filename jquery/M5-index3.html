@@ -1,0 +1,33 @@
+<!-- Animar elementos por CSS -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>JQuery: Clase 13</title>
+	<style>
+		#message{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 50%;
+			height: 50px;
+			background-color: orange;
+		}
+	</style>
+</head>
+<body>
+	<div id="message">
+		Has un click para que se oculte
+	</div>
+	<script src="js/vendor/jquery.js"></script>
+	<script type="text/javascript">	
+	 	$(function(){
+			$("#message").click(function(e){
+				var w = $("#message").css("width");
+				w = parseInt(w)-10;
+				$(this).css("width",w);
+			});
+		})		
+	</script>
+</body>
+</html>
